@@ -3,8 +3,9 @@
 
 import { Button } from "@/components/ui/button";
 import { increment } from "@/redux/features/counter/CounterSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { RootState } from "@/redux/store";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 const Counter = () => {
   //   const [count, setCount] = useState(0);
@@ -12,8 +13,8 @@ const Counter = () => {
   //   const increment = () => setCount((prev) => prev + 1);
   //   const decrement = () => setCount((prev) => prev - 1);
   //   const reset = () => setCount(0);
-  const dispatch = useDispatch();
-  const { value } = useSelector((state: RootState) => state.counter);
+  const dispatch = useAppDispatch();
+  const { value } = useAppSelector((state: RootState) => state.counter);
 
   const handleIncrement = () => {
     dispatch(increment());
