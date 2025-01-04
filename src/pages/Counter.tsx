@@ -2,7 +2,10 @@
 // import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { increment } from "@/redux/features/counter/CounterSlice";
+import {
+  increment,
+  incrementByAmount,
+} from "@/redux/features/counter/CounterSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { RootState } from "@/redux/store";
 // import { useDispatch } from "react-redux";
@@ -19,6 +22,9 @@ const Counter = () => {
   const handleIncrement = () => {
     dispatch(increment());
   };
+  const handleIncrementAmt = () => {
+    dispatch(incrementByAmount(5));
+  };
 
   return (
     <div style={{ textAlign: "center", fontFamily: "Arial" }}>
@@ -27,7 +33,7 @@ const Counter = () => {
       <div className="flex justify-center gap-2">
         <Button onClick={handleIncrement}>Increment</Button>
         <Button>Decrement</Button>
-        <Button>Reset</Button>
+        <Button onClick={handleIncrementAmt}>IN AMT</Button>
       </div>
     </div>
   );
