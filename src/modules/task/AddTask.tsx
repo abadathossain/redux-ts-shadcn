@@ -17,7 +17,7 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
 // import { Calendar } from "@/components/ui/calendar";
 import {
@@ -38,13 +38,14 @@ import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { useAppDispatch } from "@/redux/hook";
 import { addTask } from "@/redux/features/task/TaskSlice";
+import { ITask } from "@/types/types";
 
 export function AddTask() {
   const form = useForm();
   const dispatch = useAppDispatch();
-  const onsubmit = (data: any) => {
+  const onsubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
-    dispatch(addTask(data));
+    dispatch(addTask(data as ITask));
   };
   return (
     <Dialog>
